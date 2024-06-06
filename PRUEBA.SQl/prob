@@ -1,0 +1,156 @@
+
+//Blackbox: ¿Cómo puedo hacer un CRUD en Java que tenga todos los componentes y una tabla para la vista?
+public static Connection getConection() {
+    Connection con = null;
+    String base = "escuela"; //Nombre de la base de datos
+    String url = "jdbc:mysql://localhost:3306/" + base; //Direccion, puerto y nombre de la Base de Datos
+    String user = "root"; //Usuario de Acceso a MySQL
+    String password = "password"; //Password del usuario
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection(url, user, password);
+    } catch (ClassNotFoundException | SQLException e) {
+        System.err.println(e);
+    }
+    return con;
+}
+
+---CREATE
+private void btnGuardaActionPerformed(java.awt.event.ActionEvent evt) {                                          
+
+    Connection con;
+
+    try {
+        con = getConection();
+        ps = con.prepareStatement("INSERT INTO persona (clave, nombre, domicilio, telefono, correo_electronico, fecha_nacimiento, genero) VALUES(?,?,?,?,?,?,?) ");
+        ps.setString(1, txtClave.getText());
+        ps.setString(2, txtNombre.getText());
+        ps.setString(3, txtDomicilio.getText());
+        ps.setString(4, txtTelefono.getText());
+        ps.setString(5, txtEmail.getText());
+        ps.setDate(6, Date.valueOf(txtFecha.getText()));
+        ps.setString(7, cbxGenero.getSelectedItem().toString());
+
+        int res = ps.executeUpdate();
+
+        if (res > 0) {
+            JOptionPane.showMessageDialog(null, "Persona Guardada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al Guardar persona");
+        }
+			
+	limpiarCajas();
+        con.close();
+
+    } catch (HeadlessException | SQLException e) {
+        System.err.println(e);
+    }
+}
+
+---READ
+// Not provided in the example, but you can create a method to read data from the database and display it in a table or other UI component.
+
+---executeUpdate
+private void btnModificaActionPerformed(java.awt.event.ActionEvent evt) {                                          
+
+    Connection con;
+
+    try {
+        con = getConection();
+        ps = con.prepareStatement("UPDATE persona SET clave=?, nombre=?, domicilio=?, telefono=?, correo_electronico=?, fecha_nacimiento=?, genero=? WHERE id=?");
+        ps.setString(1, txtClave.getText());
+        ps.setString(2, txtNombre.getText());
+        ps.setString(3, txtDomicilio.getText());
+        ps.setString(4, txtTelefono.getText());
+        ps.setString(5, txtEmail.getText());
+        ps.setDate(6, Date.valueOf(txtFecha.getText()));
+        ps.setString(7, cbxGenero.getSelectedItem().toString());
+        ps.setString(8, txtId.getText());
+
+        int res = ps.executeUpdate();
+
+        if (res > 0) {
+            JOptionPane.showMessageDialog(null, "Persona Modificada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al Modificar persona");
+        }
+        limpiarCajas();
+        con.close();
+
+    } catch (HeadlessException | SQLException e) {
+        System.err.println(e);
+    }
+}
+
+----DELETE
+private void btnEliminaActionPerformed(java.awt.event.ActionEvent evt) {
+
+    Connection con;
+
+    try {
+        con = getConection();
+        ps = con.prepareStatement("DELETE FROM persona WHERE id=?");
+        ps.setString(1, txtId.getText());
+
+        int res = ps.executeUpdate();
+
+        if (res > 0) {
+            JOptionPane.showMessageDialog(null, "Persona Eliminada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al Eliminar persona");
+        }
+        limpiarCajas();
+        con.close();
+
+    } catch (HeadlessException | SQLException e) {
+        System.err.println(e);
+    }
+}
+----Here is an example of how you can implement the read functionality in your Java CRUD application:
+public void display() {
+    Connection con = getConection();
+    try {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM persona");
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String clave = rs.getString("clave");
+            String nombre = rs.getString("nombre");
+            String domicilio = rs.getString("domicilio");
+            String telefono = rs.getString("telefono");
+            String correoElectronico = rs.getString("correo_electronico");
+            Date fechaNacimiento = rs.getDate("fecha_nacimiento");
+            String genero = rs.getString("genero");
+
+            System.out.println("ID: " + id);
+            System.out.println("Clave: " + clave);
+            System.out.println("Nombre: " + nombre);
+            System.out.println("Domicilio: " + domicilio);
+            System.out.println("Telefono: " + telefono);
+            System.out.println("Correo Electronico: " + correoElectronico);
+            System.out.println("Fecha Nacimiento: " + fechaNacimiento);
+            System.out.println("Genero: " + genero);
+            System.out.println("------------------------");
+        }
+        con.close();
+    } catch (SQLException e) {
+        System.err.println(e);
+    }
+}
+---You would need to replace persona with the actual table name you want to read from, and adjust the column names to match your table schema.
+
+You can call this method in your case 5 statement:
+
+
+case 5:
+    hr.display();
+    break;
+
+
+
+
+
+
+
