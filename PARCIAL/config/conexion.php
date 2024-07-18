@@ -5,10 +5,10 @@ class Clase_Conectar
 {
     public $conexion;
     protected $db;
-    private $server = "localhost";
+    private $server = "127.0.0.1";
     private $usu = "root";
     private $clave = "";
-    private $base = "sport";
+    private $base = "ssport";
 
     private $port = 3307;
 
@@ -37,3 +37,4 @@ class Clase_Conectar
         return $this->conexion;
     }
 }
+?>
