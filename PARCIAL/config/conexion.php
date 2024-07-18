@@ -8,9 +8,9 @@ class Clase_Conectar
     private $server = "localhost";
     private $usu = "root";
     private $clave = "";
-    private $base = "bdd";
+    private $base = "sport";
 
-    private $port = 3306;
+    private $port = 3307;
 
     public function Procedimiento_Conectar()
     {
