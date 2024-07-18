@@ -140,9 +140,10 @@ function formatDateForDisplay($date) {
             </tbody>
         </table>
 
-         <!-- Botón para regresar al index -->
-    <a href="http://localhost:3000/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
-</div>         
+        <!-- Botón para regresar al index -->
+        <a href="http://localhost:3000/PARCIAL2/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+         
 
     <!-- Modal para agregar/editar evento -->
     <div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">

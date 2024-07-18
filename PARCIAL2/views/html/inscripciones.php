@@ -138,10 +138,10 @@ $participantes = $participantesController->listar();
                 <?php endforeach; ?>
             </tbody>
         </table>
-         <!-- Botón para regresar al index -->
-    <a href="http://localhost:3000/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
-</div>         
-
+        <!-- Botón para regresar al index -->
+        <a href="http://localhost:3000/PARCIAL2/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+    
 
     <!-- Modal para crear/editar inscripción -->
     <div class="modal fade" id="inscripcionModal" tabindex="-1" role="dialog" aria-labelledby="inscripcionModalLabel" aria-hidden="true">

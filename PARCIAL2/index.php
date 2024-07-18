@@ -71,10 +71,10 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
                     <a class="nav-link" href="<?php echo $base_url; ?>views/html/inscripciones.php">Inscripciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $base_url; ?>index.php">Principal</a>
+                    <a class="nav-link" href="<?php echo $base_url; ?>http://localhost:3000/PARCIAL2/index.php">Principal</a>
                 </li>
             </ul>
-        </div>
+        </div>            
     </nav>
 
     <div class="container mt-4">

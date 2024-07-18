@@ -135,9 +135,11 @@ $participantes = $controller->listar();
         </table>
         
         <!-- Botón para regresar al index -->
-        <a href="http://localhost:3000/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+        <a href="http://localhost:3000/PARCIAL2/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
     </div>
     
+   
+  
     <!-- Modal para agregar/editar participante -->
     <div class="modal fade" id="participanteModal" tabindex="-1" role="dialog" aria-labelledby="participanteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
