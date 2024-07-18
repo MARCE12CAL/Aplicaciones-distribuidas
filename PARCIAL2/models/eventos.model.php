@@ -1,5 +1,5 @@
 <?php
-require_once('../config/conexion.php');
+require_once(__DIR__ . '/../config/conexion.php');
 
 class EventosModel {
     private $conexion;
@@ -16,9 +16,10 @@ class EventosModel {
     }
 
     public function insertar_evento($nombre, $fecha, $ubicacion, $descripcion) {
+        $fecha_formateada = date('Y-m-d', strtotime(str_replace('/', '-', $fecha)));
         $sql = "INSERT INTO Eventos (nombre, fecha, ubicacion, descripcion) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($this->conexion, $sql);
-        mysqli_stmt_bind_param($stmt, "ssss", $nombre, $fecha, $ubicacion, $descripcion);
+        mysqli_stmt_bind_param($stmt, "ssss", $nombre, $fecha_formateada, $ubicacion, $descripcion);
         return mysqli_stmt_execute($stmt);
     }
 
@@ -32,9 +33,10 @@ class EventosModel {
     }
 
     public function actualizar_evento($id, $nombre, $fecha, $ubicacion, $descripcion) {
+        $fecha_formateada = date('Y-m-d', strtotime(str_replace('/', '-', $fecha)));
         $sql = "UPDATE Eventos SET nombre = ?, fecha = ?, ubicacion = ?, descripcion = ? WHERE evento_id = ?";
         $stmt = mysqli_prepare($this->conexion, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssi", $nombre, $fecha, $ubicacion, $descripcion, $id);
+        mysqli_stmt_bind_param($stmt, "ssssi", $nombre, $fecha_formateada, $ubicacion, $descripcion, $id);
         return mysqli_stmt_execute($stmt);
     }
 

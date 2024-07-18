@@ -1,8 +1,8 @@
 function editInscripcion(id) {
     $.ajax({
-        url: '../../controllers/inscripciones.controller.php',
+        url: '../../controllers/inscripciones.controller.php?action=obtener',
         type: 'GET',
-        data: { action: 'show', id: id },
+        data: { id: id },
         success: function(response) {
             var inscripcion = JSON.parse(response);
             $('#inscripcion_id').val(inscripcion.inscripcion_id);
@@ -15,15 +15,19 @@ function editInscripcion(id) {
 
 function saveInscripcion() {
     var formData = $('#inscripcionForm').serialize();
-    var action = $('#inscripcion_id').val() ? 'update' : 'store';
+    var action = $('#inscripcion_id').val() ? 'actualizar' : 'insertar';
     
     $.ajax({
-        url: '../../controllers/inscripciones.controller.php',
+        url: '../../controllers/inscripciones.controller.php?action=' + action,
         type: 'POST',
-        data: formData + '&action=' + action,
+        data: formData,
         success: function(response) {
-            $('#inscripcionModal').modal('hide');
-            location.reload();
+            if (response.trim() === 'success') {
+                $('#inscripcionModal').modal('hide');
+                location.reload();
+            } else {
+                alert('Error al guardar la inscripción');
+            }
         }
     });
 }
@@ -31,11 +35,15 @@ function saveInscripcion() {
 function deleteInscripcion(id) {
     if (confirm('¿Está seguro de que desea eliminar esta inscripción?')) {
         $.ajax({
-            url: '../../controllers/inscripciones.controller.php',
+            url: '../../controllers/inscripciones.controller.php?action=eliminar',
             type: 'POST',
-            data: { action: 'destroy', id: id },
+            data: { id: id },
             success: function(response) {
-                location.reload();
+                if (response.trim() === 'success') {
+                    location.reload();
+                } else {
+                    alert('Error al eliminar la inscripción');
+                }
             }
         });
     }

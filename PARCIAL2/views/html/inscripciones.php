@@ -1,4 +1,5 @@
 <?php
+$base_url = 'http://localhost:3000/PARCIAL2/';
 require_once("../../controllers/inscripciones.controller.php");
 require_once("../../controllers/eventos.controller.php");
 require_once("../../controllers/participantes.controller.php");
@@ -50,7 +51,9 @@ $participantes = $participantesController->listar();
             </tbody>
         </table>
     </div>
-
+<!-- Botón para regresar al index -->
+</div>   <a href="http://localhost:3000/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+</div>
     <!-- Modal para crear/editar inscripción -->
     <div class="modal fade" id="inscripcionModal" tabindex="-1" role="dialog" aria-labelledby="inscripcionModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -145,5 +148,8 @@ $participantes = $participantesController->listar();
             });
         });
     </script>
+    <!-- Justo antes del cierre del body -->
+<script src="inscripciones.js"></script>
+
 </body>
 </html>

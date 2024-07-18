@@ -18,12 +18,15 @@ $(document).ready(function() {
             type: 'POST',
             data: formData,
             success: function(response) {
-                if (response === 'success') {
+                if (response.trim() === 'success') {
                     $('#participanteModal').modal('hide');
                     location.reload();
                 } else {
                     alert('Error al guardar el participante');
                 }
+            },
+            error: function() {
+                alert('Error en la solicitud AJAX');
             }
         });
     });
@@ -44,6 +47,9 @@ $(document).ready(function() {
                 $('#telefono').val(data.telefono);
                 $('#participanteModalLabel').text('Editar Participante');
                 $('#participanteModal').modal('show');
+            },
+            error: function() {
+                alert('Error al obtener los datos del participante');
             }
         });
     });
@@ -57,11 +63,14 @@ $(document).ready(function() {
                 type: 'POST',
                 data: { id: participanteId },
                 success: function(response) {
-                    if (response === 'success') {
+                    if (response.trim() === 'success') {
                         location.reload();
                     } else {
                         alert('Error al eliminar el participante');
                     }
+                },
+                error: function() {
+                    alert('Error en la solicitud AJAX');
                 }
             });
         }

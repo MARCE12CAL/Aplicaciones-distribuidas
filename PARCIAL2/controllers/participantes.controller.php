@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../models/participantes.model.php');
-require_once('../config/conexion.php');
+
 class ParticipantesController {
     private $modelo;
 
@@ -12,20 +12,65 @@ class ParticipantesController {
         return $this->modelo->listar_participantes();
     }
 
-    public function insertar($nombre, $apellido, $email, $telefono) {
-        return $this->modelo->insertar_participante($nombre, $apellido, $email, $telefono);
+    public function insertar() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $email = $_POST['email'];
+            $telefono = $_POST['telefono'];
+            $resultado = $this->modelo->insertar_participante($nombre, $apellido, $email, $telefono);
+            echo $resultado ? 'success' : 'error';
+        }
     }
 
-    public function obtener($id) {
-        return $this->modelo->obtener_participante($id);
+    public function obtener() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $participante = $this->modelo->obtener_participante($id);
+            echo json_encode($participante);
+        }
     }
 
-    public function actualizar($id, $nombre, $apellido, $email, $telefono) {
-        return $this->modelo->actualizar_participante($id, $nombre, $apellido, $email, $telefono);
+    public function actualizar() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['participante_id'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $email = $_POST['email'];
+            $telefono = $_POST['telefono'];
+            $resultado = $this->modelo->actualizar_participante($id, $nombre, $apellido, $email, $telefono);
+            echo $resultado ? 'success' : 'error';
+        }
     }
 
-    public function eliminar($id) {
-        return $this->modelo->eliminar_participante($id);
+    public function eliminar() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $resultado = $this->modelo->eliminar_participante($id);
+            echo $resultado ? 'success' : 'error';
+        }
     }
+}
+
+// Manejar las solicitudes
+$controller = new ParticipantesController();
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+
+switch ($action) {
+    case 'listar':
+        $controller->listar();
+        break;
+    case 'insertar':
+        $controller->insertar();
+        break;
+    case 'obtener':
+        $controller->obtener();
+        break;
+    case 'actualizar':
+        $controller->actualizar();
+        break;
+    case 'eliminar':
+        $controller->eliminar();
+        break;
 }
 ?>

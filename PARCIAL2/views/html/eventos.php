@@ -1,7 +1,12 @@
 <?php
+$base_url = 'http://localhost:3000/PARCIAL2/';
 require_once("../../controllers/eventos.controller.php");
 $controller = new EventosController();
 $eventos = $controller->listar();
+
+function formatDateForDisplay($date) {
+    return date('d/m/Y', strtotime($date));
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +23,7 @@ $eventos = $controller->listar();
     <div class="container mt-4">
         <h2>Gestión de Eventos</h2>
         <button class="btn btn-primary mb-3" id="btnAgregarEvento">Agregar Evento</button>
+        
         <table class="table">
             <thead>
                 <tr>
@@ -34,7 +40,7 @@ $eventos = $controller->listar();
                 <tr>
                     <td><?php echo $evento['evento_id']; ?></td>
                     <td><?php echo $evento['nombre']; ?></td>
-                    <td><?php echo $evento['fecha']; ?></td>
+                    <td><?php echo formatDateForDisplay($evento['fecha']); ?></td>
                     <td><?php echo $evento['ubicacion']; ?></td>
                     <td><?php echo $evento['descripcion']; ?></td>
                     <td>
@@ -45,8 +51,10 @@ $eventos = $controller->listar();
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-
+          <!-- Botón para regresar al index -->
+    <a href="http://localhost:3000/index.php" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+</div>         
+    
     <!-- Modal para agregar/editar evento -->
     <div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -66,7 +74,7 @@ $eventos = $controller->listar();
                         </div>
                         <div class="form-group">
                             <label for="fecha">Fecha</label>
-                            <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            <input type="text" class="form-control" id="fecha" name="fecha" required placeholder="DD/MM/YYYY">
                         </div>
                         <div class="form-group">
                             <label for="ubicacion">Ubicación</label>

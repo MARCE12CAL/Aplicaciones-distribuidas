@@ -12,19 +12,12 @@ $(document).ready(function() {
         });
     }
 
-    $('#eventosLink').click(function(e) {
+    $('.nav-link').click(function(e) {
         e.preventDefault();
-        loadContent('eventos');
-    });
-
-    $('#participantesLink').click(function(e) {
-        e.preventDefault();
-        loadContent('participantes');
-    });
-
-    $('#inscripcionesLink').click(function(e) {
-        e.preventDefault();
-        loadContent('inscripciones');
+        var view = $(this).data('view');
+        if (view) {
+            loadContent(view);
+        }
     });
 
     // Cargar eventos por defecto
