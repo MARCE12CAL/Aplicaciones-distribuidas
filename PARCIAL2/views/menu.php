@@ -13,7 +13,7 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
             background-color: #f0f0f0;
         }
         .navbar {
-            background-color: #2196f3; /* Blue color */
+            background-color: #2196f3;                                           /* Blue color */
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -21,15 +21,15 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
         .navbar-brand {
             font-size: 24px;
             font-weight: bold;
-            color: #03a9f4; /* Electric blue color */
+            color: #03a9f4;                                                  /* Electric blue color */
             text-shadow: 0 0 10px #03a9f4;
         }
         .navbar-brand span {
-            color: #03a9f4; /* Electric blue color */
+            color: #03a9f4;                                             /* Electric blue color */
             text-shadow: 0 0 10px #03a9f4;
         }
         .nav-link {
-            color: #03a9f4; /* Electric blue color */
+            color: #03a9f4;                                                  /* Electric blue color */
             text-shadow: 0 0 10px #03a9f4;
             transition: color 0.2s ease;
             padding: 10px 20px;
@@ -37,7 +37,7 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
         }
         .nav-link:hover {
             color: #fff;
-            background-color: #03a9f4; /* Electric blue color */
+            background-color: #03a9f4;                                /* Electric blue color */
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .nav-box {
@@ -49,7 +49,7 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
         .nav-box span {
             font-size: 18px;
             font-weight: bold;
-            color: #03a9f4; /* Electric blue color */
+            color: #03a9f4;                                                   /* Electric blue color */
             text-shadow: 0 0 10px #03a9f4;
         }
         .container {

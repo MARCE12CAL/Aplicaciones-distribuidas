@@ -10,8 +10,8 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #007BFF; /* Fondo azul */
-            color: #000000; /* Letras negras */
+            background-color: #007BFF;                                   /* Fondo azul */
+            color: #000000;                                               /* Letras negras */
             font-family: 'Open Sans', sans-serif;
         }
         .container {
@@ -32,24 +32,24 @@ $base_url = 'http://localhost:3000/PARCIAL2/';
         }
         .nav-link {
             color: #fff;
-            font-weight: bold; /* Letras en negrita */
+            font-weight: bold;                                  /* Letras en negrita */
             transition: color 0.2s ease;
-            background-color: #444; /* Fondo de las opciones */
-            padding: 10px 20px; /* Espaciado interno */
-            border-radius: 5px; /* Bordes redondeados */
-            margin: 5px; /* Espaciado entre las opciones */
+            background-color: #444;                             /* Fondo de las opciones */
+            padding: 10px 20px;                                    /* Espaciado interno */
+            border-radius: 5px;                                 /* Bordes redondeados */
+            margin: 5px;                                      /* Espaciado entre las opciones */
         }
         .nav-link:hover {
             color: #ccc;
-            background-color: #555; /* Cambio de fondo al pasar el cursor */
+            background-color: #555;                             /* Cambio de fondo al pasar el cursor */
         }
         h1 {
             font-weight: bold;
-            color: #000; /* Letras negras */
+            color: #000;                                              /* Letras negras */
         }
         p {
             font-size: 18px;
-            color: #000; /* Letras negras */
+            color: #000;                                                   /* Letras negras */
         }
     </style>
 </head>
